@@ -39,7 +39,7 @@ const CheeseGame = () => {
     checkMobile();
   }, []);
 
-  const BOUNDARY_RIGHT = isMobile ? GAME_WIDTH - CHEESE_WIDTH - 104 : GAME_WIDTH - CHEESE_WIDTH + 142;
+  const BOUNDARY_RIGHT = isMobile ? GAME_WIDTH - CHEESE_WIDTH - 105 : GAME_WIDTH - CHEESE_WIDTH + 142;
   const currentSpeed = BASE_SPEED + ((multiplier - 1) * 2);
 
   const checkStability = useCallback((stackPieces) => {
