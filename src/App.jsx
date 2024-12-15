@@ -251,7 +251,7 @@ const CheeseGame = () => {
           </div>
         </div>
       </div>
-
+  
       <div className="relative h-96 bg-green-100 border-4 border-green-400 rounded-lg overflow-visible">
         <div className="absolute bottom-0 left-0 w-full h-full">
           {stack.map((cheese, index) => (
@@ -271,7 +271,7 @@ const CheeseGame = () => {
               <CheeseSlice width={CHEESE_WIDTH} height={20} />
             </div>
           ))}
-
+  
           {isPlaying && !gameOver && !isToppling && (
             <div
               className="absolute"
@@ -286,7 +286,23 @@ const CheeseGame = () => {
             </div>
           )}
         </div>
-
+      </div>
+  
+      {/* Separate Pepe container based on device */}
+      {isMobile ? (
+        <div className="mt-4 flex justify-center">
+          <div className="w-32 h-32">
+            <img
+              src={mouseState === 'normal' ? normalPepe :
+                mouseState === 'happy' ? happyPepe :
+                  sadPepe}
+              alt={`Pepe Mouse ${mouseState}`}
+              className={`w-full h-full object-contain transition-transform duration-200 
+                ${mouseState === 'happy' ? 'transform -translate-y-2' : mouseState === 'sad' ? 'transform rotate-12' : ''}`}
+            />
+          </div>
+        </div>
+      ) : (
         <div className="absolute -bottom-32 -right-32 w-32 h-32">
           <img
             src={mouseState === 'normal' ? normalPepe :
@@ -297,8 +313,8 @@ const CheeseGame = () => {
               ${mouseState === 'happy' ? 'transform -translate-y-2' : mouseState === 'sad' ? 'transform rotate-12' : ''}`}
           />
         </div>
-      </div>
-
+      )}
+  
       <div className="text-center mt-4">
         {(gameOver || !isPlaying) ? (
           <button
